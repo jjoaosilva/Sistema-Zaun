@@ -19,7 +19,13 @@
     define("SQL17", "SELECT credor, COUNT(codcompra) FROM credores, compras WHERE credores.codcredor = compras.codcredor GROUP BY credor");
     define("SQL18", "SELECT credor, AVG(compras.valor) FROM credores, compras WHERE credores.codcredor = compras.codcredor GROUP BY credor");
     define("SQL19", "SELECT compras.codcompra, datacompra, COUNT(sequencia) as num_parcelas FROM compras, parcelas WHERE compras.codcompra = parcelas.codcompra GROUP BY compras.codcompra");
-
+    define("SQL20", "SELECT credor, MAX(compras.valor) as maior_compra FROM credores, compras WHERE credores.codcredor = compras.codcredor GROUP BY credor");
+    define("SQL21", "SELECT compras.*, COUNT(sequencia) as num_parcelas FROM compras, parcelas WHERE compras.codcompra = parcelas.codcompra GROUP BY codcompra HAVING COUNT(sequencia) > 2");
+    define("SQL22", "SELECT credor, SUM(compras.valor) as total_compras FROM credores, compras WHERE credores.codcredor = compras.codcredor GROUP BY compras.codcredor HAVING SUM(compras.valor) > 1000");
+    define("SQL23", "SELECT credor, AVG(compras.valor) as valor_medio FROM credores, compras WHERE credores.codcredor = compras.codcredor   AND datacompra BETWEEN '2014-10-02' AND '2017-11-11' GROUP BY compras.codcredor");
+    
     $array_consultas = array(SQL01, SQL02, SQL03, SQL04, SQL05, SQL06, SQL07, SQL08, SQL09, SQL10, 
-                             SQL11, SQL12, SQL13, SQL14, SQL15, SQL16, SQL17, SQL18, SQL19);
+                             SQL11, SQL12, SQL13, SQL14, SQL15, SQL16, SQL17, SQL18, SQL19, SQL20,
+                             SQL21, SQL22, SQL23);
 ?>
+

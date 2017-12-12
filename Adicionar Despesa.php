@@ -99,6 +99,8 @@
             require_once 'config.inc.php';
             require_once 'dp_conn.model.php';
 
+            error_reporting(0);
+            
             $SQL = "SELECT credor from credores";
 
             $result = $Conn->prepare($SQL);
